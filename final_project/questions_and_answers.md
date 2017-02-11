@@ -131,6 +131,7 @@ It is hard to say whether precision or recall is more important when evaluating 
 
 ## References
 
+- http://scikit-learn.org
 - http://scikit-learn.org/stable/auto_examples/model_selection/grid_search_digits.html#sphx-glr-auto-examples-model-selection-grid-search-digits-py
 - http://scikit-learn.org/stable/auto_examples/gaussian_process/plot_gpr_prior_posterior.html#sphx-glr-auto-examples-gaussian-process-plot-gpr-prior-posterior-py
 - http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedShuffleSplit.html
@@ -143,3 +144,5 @@ It is hard to say whether precision or recall is more important when evaluating 
 - http://pandas.pydata.org/
 - http://stats.stackexchange.com/questions/107874/how-to-deal-with-a-skewed-class-in-binary-classification-having-many-features
 - https://discussions.udacity.com/t/why-precision-recall-value-is-so-low/187489/2
+
+I hereby confirm that this submission is my work. I have cited above the origins of any parts of the submission that were taken from Websites, books, forums, blog posts, github repositories, etc.
