@@ -49,7 +49,7 @@ Once I completed this step, I iterated through all values of k from 1 to the tot
 
 The following plot of the precision and recall scores for each value of k shows that the ideal number of features was 5.
 
-[feature_selection_plot](https://github.com/eminnett/da-nanodegree-intro-to-machine-learning/blob/master/final_project/assets/feature_selection_plot.png) "Precision and Recall Scores for each k best features"
+![feature_selection_plot](https://github.com/eminnett/da-nanodegree-intro-to-machine-learning/blob/master/final_project/assets/feature_selection_plot.png "Precision and Recall Scores for each k best features")
 
 The 5 features and their scores from `SelectKBest` are displayed at the beginning of this answer.
 
@@ -59,8 +59,11 @@ What algorithm did you end up using? What other one(s) did you try? How did mode
 
 **Answer:** I ended up using a Decision Tree classifier though I managed to train a K Nearest Neighbour classifier to perform equally well against the test data. I will explain why the Decision Tree was my classifier of choice in my answer to question 6. Initially, I compared the performance of KNN, SVM, Decision Tree, Random Forest, AdaBoost, and Gaussian Naive Bayes classifiers. All 6 were tested with and without feature scaling and normalisation using their default parameters. These were the results:
 
-|  <td colspan=3> With Feature Scaling and Normalisation   <td colspan=3>  Without Feature Scaling or Normalisation |
-|------------------------|-------------------------------------------|----------------------------------------------|
+- FS & N = T:  (With Feature Scaling and Normalisation)
+- FS & N = F: (Without Feature Scaling and Normalisation)
+
+|                        | FS & N = T    | FS & N = T | FS & N = T   | FS & N = F     | FS & N = F  | FS & N = F    |
+|------------------------|---------------|------------|--------------|----------------|-------------|---------------|
 | Classifier             | Precision     | Recall     | F1 Score     | Precision      | Recall      | F1 Score      |
 | K Nearest Neighbours   | 1.0           | 0.25       | 0.4          | 1.0            | 0.25        | 0.4           |
 | Support Vector Machine | 0.0           | 0.0        | 0.0          | 0.0            | 0.0         | 0.0           |
