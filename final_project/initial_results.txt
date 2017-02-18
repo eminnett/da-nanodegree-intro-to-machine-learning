@@ -5,7 +5,7 @@ KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
            metric_params=None, n_jobs=1, n_neighbors=5, p=2,
            weights='uniform')
 training time: 0.001 s
-prediction time: 0.001 s
+prediction time: 0.002 s
 -------------- Scores ------------------
 accuracy_score: 0.931818181818
 precision_score: 1.0
@@ -40,11 +40,11 @@ DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
 training time: 0.0 s
 prediction time: 0.0 s
 -------------- Scores ------------------
-accuracy_score: 0.909090909091
-precision_score: 0.5
+accuracy_score: 0.931818181818
+precision_score: 0.666666666667
 recall_score: 0.5
-f1_score: 0.5
-matthews_corrcoef: 0.45
+f1_score: 0.571428571429
+matthews_corrcoef: 0.541752651087
 ****************************************
 ****************************************
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
@@ -53,7 +53,7 @@ RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
             min_samples_split=2, min_weight_fraction_leaf=0.0,
             n_estimators=10, n_jobs=1, oob_score=False, random_state=None,
             verbose=0, warm_start=False)
-training time: 0.026 s
+training time: 0.027 s
 prediction time: 0.006 s
 -------------- Scores ------------------
 accuracy_score: 0.909090909091
@@ -65,14 +65,14 @@ matthews_corrcoef: 0.0
 ****************************************
 AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None,
           learning_rate=1.0, n_estimators=50, random_state=None)
-training time: 0.109 s
-prediction time: 0.006 s
+training time: 0.112 s
+prediction time: 0.004 s
 -------------- Scores ------------------
-accuracy_score: 0.840909090909
-precision_score: 0.0
-recall_score: 0.0
-f1_score: 0.0
-matthews_corrcoef: -0.0855398922768
+accuracy_score: 0.863636363636
+precision_score: 0.25
+recall_score: 0.25
+f1_score: 0.25
+matthews_corrcoef: 0.175
 ****************************************
 ****************************************
 GaussianNB(priors=None)
@@ -86,7 +86,10 @@ f1_score: 0.5
 matthews_corrcoef: 0.45
 ****************************************
 
-****************************************************************************************************
+
+************************************************************************************************************************
+
+
 Performed feature scaling and normalisation: False
 Number of Features: 5
 ****************************************
@@ -129,11 +132,11 @@ DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
 training time: 0.0 s
 prediction time: 0.0 s
 -------------- Scores ------------------
-accuracy_score: 0.840909090909
-precision_score: 0.285714285714
+accuracy_score: 0.863636363636
+precision_score: 0.333333333333
 recall_score: 0.5
-f1_score: 0.363636363636
-matthews_corrcoef: 0.294741559459
+f1_score: 0.4
+matthews_corrcoef: 0.335083126633
 ****************************************
 ****************************************
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
@@ -142,14 +145,14 @@ RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
             min_samples_split=2, min_weight_fraction_leaf=0.0,
             n_estimators=10, n_jobs=1, oob_score=False, random_state=None,
             verbose=0, warm_start=False)
-training time: 0.031 s
+training time: 0.026 s
 prediction time: 0.006 s
 -------------- Scores ------------------
-accuracy_score: 0.909090909091
+accuracy_score: 0.863636363636
 precision_score: 0.0
 recall_score: 0.0
 f1_score: 0.0
-matthews_corrcoef: 0.0
+matthews_corrcoef: -0.0690065559342
 ****************************************
 ****************************************
 AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None,
@@ -157,15 +160,15 @@ AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None,
 training time: 0.107 s
 prediction time: 0.004 s
 -------------- Scores ------------------
-accuracy_score: 0.840909090909
-precision_score: 0.0
-recall_score: 0.0
-f1_score: 0.0
-matthews_corrcoef: -0.0855398922768
+accuracy_score: 0.863636363636
+precision_score: 0.25
+recall_score: 0.25
+f1_score: 0.25
+matthews_corrcoef: 0.175
 ****************************************
 ****************************************
 GaussianNB(priors=None)
-training time: 0.0 s
+training time: 0.001 s
 prediction time: 0.0 s
 -------------- Scores ------------------
 accuracy_score: 0.909090909091
