@@ -57,7 +57,7 @@ df_with_features = df_without_email[features_list]
 
 # For each feature find the data points with extreme high or low values
 ouliers_by_feature = {}
-df_with_outliers = df_with_features.copy()#.drop('restricted_stock_deferred', 1) Removing this from consideration feels a bit smelly.
+df_with_outliers = df_with_features.copy()
 for feature in df_with_outliers.keys():
     df_exclude_zeroes = df_with_outliers.copy()[df_with_outliers[feature] != 0]
 
@@ -72,16 +72,19 @@ for feature in df_with_outliers.keys():
 
     ouliers_by_feature[feature] = df_exclude_zeroes[~((df_exclude_zeroes[feature] >= Q1 - step) & (df_exclude_zeroes[feature] <= Q3 + step))]
 
-# Consider a row an overall outlier if it is an outlier for more than a quarter of all the features.
+# Consider a row an overall outlier if it is an outlier for more than a quarter of
+# all the features BUT NOT A POI. There are too few POI records to disregard any of them.
 all_indices = [df_with_outliers.index.tolist() for feature, df_with_outliers in ouliers_by_feature.iteritems()]
 flattened_indices = [index for index_list in all_indices for index in index_list]
 outliers  = [index for index, count in Counter(flattened_indices).iteritems() if count > len(features_list) / 4]
+poi_indices = df_with_outliers[df_with_outliers['poi'] == True].index.values
+outliers_excluding_poi = [index for index in outliers if index not in poi_indices ]
 # This process results in the following IDs being found as outliers for more than a quarter of the features.
-# [128, 43, 65, 82, 95]
-print "Indices for rows that include outliers for more than a quarter of the features: '{}'".format(outliers)
+# [128, 43]
+print "Indices for rows that include outliers for more than a quarter of the features (but are not POIs): '{}'".format(outliers_excluding_poi)
 
 # Remove the outliers, if any were specified
-good_data = df_with_features.copy().drop(df_with_features.index[outliers])
+good_data = df_with_features.copy().drop(df_with_features.index[outliers_excluding_poi])
 
 
 ### Task 3: Create new feature(s)
@@ -124,7 +127,7 @@ normalised_df = pd.concat([pois, df_norm_sm], axis=1)
 # fed into featureFormat and exported at the end of the script.
 def reconstruct_dict_data(df, features_list, people):
     data_dict = {}
-    for index, row in normalised_df.iterrows():
+    for index, row in df.iterrows():
         data_dict[people[index]] = row[features_list].to_dict()
     return data_dict
 
