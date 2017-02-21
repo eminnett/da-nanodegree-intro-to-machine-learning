@@ -3,7 +3,7 @@
 #### Data Analyst Nanodegree (Udacity)
 Project submission by Edward Minnett (ed@methodic.io).
 
-February 18th 2017. (Revision 2)
+February 21st 2017. (Revision 3)
 
 ----------
 
@@ -53,6 +53,10 @@ The following plot of the precision and recall scores for each value of k shows 
 
 The 5 features and their scores from `SelectKBest` are displayed at the beginning of this answer.
 
+Even though one of my engineered features was included in the set of 5 features used for the final classifier. I found that removing it made no difference to the performance of the final classifier. The final decision tree classifier was able to achieve a perfect score for all of the performance scores with all 5 features, the the top 4 features, and the top three features. It was only when the classifier was left with only 2 features did the test performance begin to suffer. Even for the results of `tester.py`, the classifier was able to achieve precision and recall scores greater than 0.3 with as few as 3 features, but the scores dropped below this threshold when only two features were left. I believe this is because the final classifier uses a `max_features` parameter of 2 but the two features that are used by the classifier aren't always the two that received the highest `SelectKBest` score.
+
+Despite these test results, I have chosen to use all 5 features for the final classifier as this is the optimal number chosen by the feature selection process.
+
 ### Question 3
 
 What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  [relevant rubric item: “pick an algorithm”]
@@ -83,14 +87,14 @@ Both classifiers were able to classify the 30% test data set with precision and 
 The two resulting classifiers with their parameters were as follows:
 
 ```
-DecisionTreeClassifier(max_features = 3, criterion = 'gini')
+DecisionTreeClassifier(max_features = 2, criterion = 'gini')
 ```
 and
 ```
 KNeighborsClassifier(n_neighbors = 1, algorithm = 'ball_tree')
 ```
 
-Though they performed equally well agains the test data set, they didn't perform equally well when tested using `tester.py`. I will discuss this in greater detail in my answer to question 6.
+Though they performed equally well against the test data set, they didn't perform equally well when tested using `tester.py`. I will discuss this in greater detail in my answer to question 6.
 
 ### Question 4
 
@@ -113,7 +117,7 @@ For the Decision Tree classifier, I optimised the maximum features used by the c
 - **'criterion'**: ['gini', 'entropy']
 - **'max_features'**: [1, 2, 3, 4, 5] (max_features can't exceed the total number of features and there were only 5 features in the final data set)
 
-GridSearchCV found the optimal parameters to be the `gini` criterion and a `max_features` value of 3.
+GridSearchCV found the optimal parameters to be the `gini` criterion and a `max_features` value of 2.
 
 ### Question 5
 
@@ -131,11 +135,11 @@ Give at least 2 evaluation metrics and your average performance for each of them
 
 **Answer:** In the end, I used 5 metrics for evaluating the trained algorithms: accuracy, precision, recall, F1 Score, and Mathew's Correlation Coefficient.
 
-Accuracy is a useful score to understand the general performance of an algorithm though it can be misleading if the target classes are unequally distributed in a dataset. For example, 12.4% POI records and 87.6% NON-POI records. If an algorithm was very naive and marked all records a NON-POI, it would have an accuracy score of 0.876 which looks like a good outcome, but in this situation it really isn't.
+Accuracy is a useful score to understand the general performance of an algorithm though it can be misleading if the target classes are unequally distributed in a dataset. For example, 12.4% POI records and 87.6% NON-POI records. If an algorithm was very naive and marked all records a NON-POI, it would have an accuracy score of 0.876 which looks like a good outcome, but in this situation it really isn't. For this reason, it isn't an ideal metric to measure the performance for this project and certainly shouldn't be used on its own.
 
 The precision score is the number of correctly classified positive records divided by the total number of records labeled as positive. If we think of this score in terms of medical diagnostics, the precision score represents the proportion of all people diagnosed with a condition who actually had the condition.
 
-The recall score is the number of correctly classified negative records divided by the total number of records labeled as negative. If we think of this score in terms of medical diagnostics, the recall score represents the proportion of all people diagnosed not to have a condition who actually did not have the condition.
+The recall score is the number of correctly classified positive records divided by the total number of records that are in fact positive. In other words, true positives divided by the sum of true positives and false negatives. If, again, we think of this score in terms of medical diagnostics, the recall score represents the sensitivity of the diagnostic test and describes the proportion of all people who received a positive diagnosis out of all the people who actually have the condition.
 
 The F1 Score is harmonic mean of precision and recall. More specifically, it is `2 * precision * recall / (precision + recall)`. Precision and recall can have values from 0 to 1 which means the F1 score does as well. This is a much more useful score than accuracy when determining the performance of an algorithm trying to classify data with unbalanced classes.
 
@@ -152,7 +156,7 @@ The `tester.py` scores for `KNeighborsClassifier(n_neighbors = 1, algorithm = ba
 - **F1**: 0.24724
 - **F2**: 0.23975
 
-The `tester.py` scores for `DecisionTreeClassifier(max_features = 1, criterion = 'gini')` were:
+The `tester.py` scores for `DecisionTreeClassifier(max_features = 2, criterion = 'gini')` were:
 
 - **Accuracy**: 0.81967
 - **Precision**: 0.33566
@@ -160,7 +164,7 @@ The `tester.py` scores for `DecisionTreeClassifier(max_features = 1, criterion =
 - **F1**: 0.34741
 - **F2**: 0.35485
 
-Only these final results allowed me to choose `DecisionTreeClassifier(max_features = 1, criterion = 'gini')` as the higher performance classifier.
+Only these final results allowed me to choose `DecisionTreeClassifier(max_features = 2, criterion = 'gini')` as the higher performance classifier.
 
 
 ## References
